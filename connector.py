@@ -127,7 +127,7 @@ class VkSender(threading.Thread):
     daemon = True
 
     def run(self):
-        consumer = KafkaConsumer(bootstrap_servers=kafka_address+':'+kafka_port)
+        consumer = KafkaConsumer(bootstrap_servers=kafka_address+':'+kafka_port, group_id='vk-connector')
         consumer.subscribe(['to-connector'])
 
         for message in consumer:
