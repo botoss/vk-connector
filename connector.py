@@ -141,6 +141,7 @@ class VkSender(threading.Thread):
             try:
                 send_to = messages_dict[key]
                 self.sendMessage(send_to, response)
+                del(messages_dict[key])
             except:
                 pass
             
