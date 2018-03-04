@@ -12,6 +12,8 @@ from datetime import datetime
 
 from kafka import KafkaConsumer, KafkaProducer
 
+API_VERSION = '5.65'
+
 class VkListener(threading.Thread):
     daemon = True
 
@@ -155,8 +157,7 @@ class VkSender(threading.Thread):
                       'user_id': user_id,
                       'message': message,
                       'access_token': token,
-                      'guid': guid,
-                    #   'v': API_VERSION
+                      'v': API_VERSION,
                       }
         else:
             user_id=user_id-2000000000
@@ -164,8 +165,7 @@ class VkSender(threading.Thread):
                       'chat_id': user_id,
                       'message': message,
                       'access_token': token,
-                      'guid': guid,
-                    #   'v': API_VERSION
+                      'v': API_VERSION,
                       }
           
         res = requests.post(url, params=params)
